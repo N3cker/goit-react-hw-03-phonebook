@@ -12,9 +12,13 @@ const ContactList = ({ contacts, filter, setContacts }) => {
           <li key={contact.id}>
             {contact.name}: {contact.number}
             <button
-              onClick={() =>
-                setContacts(contacts.filter(c => c.id !== contact.id))
-              }
+              onClick={() => {
+                setContacts(contacts.filter(c => c.id !== contact.id));
+                localStorage.setItem(
+                  'contacts',
+                  JSON.stringify(contacts.filter(c => c.id !== contact.id))
+                );
+              }}
             >
               Delete
             </button>

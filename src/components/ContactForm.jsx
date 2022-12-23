@@ -12,6 +12,10 @@ const ContactForm = ({ contacts, setContacts }) => {
       alert('A contact with this name already exists in the phonebook');
     } else {
       setContacts([...contacts, { name, number, id: nanoid() }]);
+      localStorage.setItem(
+        'contacts',
+        JSON.stringify([...contacts, { name, number, id: nanoid() }])
+      );
       setName('');
       setNumber('');
     }
